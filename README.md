@@ -1,2 +1,2 @@
 # web_application_SpringBoot
-Designed a web application with database and using SpringBoot. We also have a link with live demonstation of our application in youtube.
+Designed a web application with database and using SpringBoot. This project manages courses of an instructor and the student registrations for each course. The designed patterns we used are Template method and Strategy pattern which are behavioral design patterns. The framework we used for project management is Scrum. We also have a link with live demonstation of our application in youtube.
