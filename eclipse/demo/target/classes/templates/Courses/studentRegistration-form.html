@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Save Student Registration</title>
+</head>
+
+<body>
+	
+	<div class="container">
+	
+		<h3>Student Registrations Directory</h3>
+		<hr>
+		
+		<p class="h4 mb-4">Save Student Registration </p>
+	
+		<form th:action="@{/courses/save-studentRegistration(courseId=${#httpServletRequest.getParameter('courseId')})}"
+						 th:object="${studentRegistration}" method="POST">
+		
+			<!-- Add hidden form field to handle update -->
+			<input type="hidden" th:field="*{studentId}" />
+			
+			<input type="text" th:field="*{studentName}"
+					class="form-control mb-4 col-4" placeholder="Student Name">
+
+			<input type="text" th:field="*{yearOfStudies}"
+					class="form-control mb-4 col-4" placeholder="Year Of Studies">
+
+			<input type="text" th:field="*{studentSemester}"
+					class="form-control mb-4 col-4" placeholder="Student Semester">
+
+			<input type="text" th:field="*{projectGrade}"
+					class="form-control mb-4 col-4" placeholder="Project Grade">
+			
+			<input type="text" th:field="*{examsGrade}"
+					class="form-control mb-4 col-4" placeholder="Exams Grade">
+			
+			<table class="table table-bordered table-striped">
+				<tbody>
+					<th>Final Grade</th>
+					<td th:text="*{finalGrade}"/td>
+				</tbody>
+			</table>
+			<button type="submit" class="btn btn-info col-2">Save</button>
+						
+		</form>
+		
+		<hr>
+		<a th:href="@{/courses/showStudentRegistrations(courseId=${#httpServletRequest.getParameter('courseId')})}">Back to Student Registrations List</a>
+		
+	</div>
+</body>
+
+</html>

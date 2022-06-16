@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    
+    <!-- Set the Character set for the page -->
+    <meta charset="utf-8">
+    
+    <!-- Let the page adapt to client device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Link to external resource (css, search, etc.) -->
+    <!-- Link to Bootstrap CSS in this case -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Statistics Print-Out</title>
+</head>
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>Project Grade Average</th>
+				<th>Exams Grade Average</th>
+				<th>Final Grade Average</th>
+				<th>Min Final Grade</th>
+				<th>Max Final Grade</th>
+				<th>Mean Final Grade</th>
+				<th>Median Final Grade</th>
+			</tr>
+		</thead>
+		<tbody>
+				
+			<td th:text="${statistics[0]}" />
+			<td th:text="${statistics[1]}" />
+			<td th:text="${statistics[2]}" />
+			<td th:text="${statistics[3]}" />
+			<td th:text="${statistics[4]}" />
+			<td th:text="${statistics[5]}" />
+			<td th:text="${statistics[6]}" />
+	
+			</tr>
+			
+		</tbody>		
+	</table>
+	
+	<hr>
+	<a th:href="@{/courses/list}">Back to Courses List</a>
+</html>

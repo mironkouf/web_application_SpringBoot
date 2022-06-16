@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    
+    <!-- Set the Character set for the page -->
+    <meta charset="utf-8">
+    
+    <!-- Let the page adapt to client device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Link to external resource (css, search, etc.) -->
+    <!-- Link to Bootstrap CSS in this case -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Course Directory</title>
+</head>
+
+<body>
+<div class="container">
+
+	<h3>Student Registration Directory</h3>
+	<hr>
+	
+	<!-- Add a button --> 
+	<a th:href="@{/courses/showFormForAdd-StudentRegistration(courseId=${#httpServletRequest.getParameter('courseId')}, testModelAttr=${test})}"
+		class="btn btn-primary btn-sm mb-3">
+		Add Student Registration
+	</a>
+	
+	
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>Student Id</th>
+				<th>Student Name</th>
+				<th>Year of Studies</th>
+				<th>Semester</th>
+				<th>Project Grade</th>
+				<th>Exams Grade</th>
+				<th>Final Grade</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="tempStudentRegistration : ${studentRegistrations}">
+				
+				<td th:text="${tempStudentRegistration.studentId}" />
+				<td th:text="${tempStudentRegistration.studentName}" />	
+				<td th:text="${tempStudentRegistration.yearOfStudies}" />	
+				<td th:text="${tempStudentRegistration.studentSemester}" />	
+				<td th:text="${tempStudentRegistration.projectGrade}" />
+				<td th:text="${tempStudentRegistration.examsGrade}" />
+				<td th:text="${tempStudentRegistration.finalGrade}" />
+				<td>
+					<!-- Add "update" button/link -->
+					<a th:href="@{/courses/showFormForUpdate-studentRegistration(courseId=${#httpServletRequest.getParameter('courseId')}, studentId=${tempStudentRegistration.studentId})}"
+					   class="btn btn-info btn-sm">
+						Update
+					</a>
+					<!-- Add "delete" button/link -->					
+					<a th:href="@{/courses/delete-studentRegistration(courseId=${#httpServletRequest.getParameter('courseId')}, studentId=${tempStudentRegistration.studentId})}"
+					   class="btn btn-danger btn-sm" 
+					   onclick="if (!(confirm('Are you sure you want to delete this Student Registration?'))) return false">
+						Delete
+					</a>
+				</td>
+			</tr>
+			
+		</tbody>		
+	</table>
+	<hr>
+	<a th:href="@{/courses/list}">Back to Courses List</a>
+	
+</div>
+	
+</body>
+</html>
